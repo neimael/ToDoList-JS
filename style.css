@@ -8,7 +8,7 @@ body {
     display: flex;
     justify-content: center;
     font-family: 'Josefin Sans',sans-serif;
-    background-color: hsl(240, 1%, 48%);
+    background-color: hsl(240, 1%, 32%);
 }
 
 .background-image {
@@ -73,11 +73,22 @@ body {
     border: 2px solid hsl(240, 1%, 61%);
     cursor: pointer;
     transition: all 0.25s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.check-mark:hover {
+.check-mark img {
+    visibility: hidden;
+}
+
+.check-mark:hover, .check-mark.checked{
     background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
     background-blend-mode: multiply,multiply;
+}
+
+.check-mark:hover img, .check-mark.checked img {
+    visibility: visible;
 }
 
 .new-todo-input {
@@ -105,4 +116,74 @@ body {
     opacity: 0.2;
 }
 
-/* 01:03:45  starting js */
+.imgCheck {
+    height: 12px;
+    width: 12px;
+}
+
+.todo-item {
+    width: 100%;
+    display: flex;
+    height: 70px;
+    border-bottom: 1px solid hsl(240, 0%, 54%);
+    font-size: 18px;
+    transition: all 0.25s ease;
+    display: flex;
+    z-index: -1;
+    cursor: pointer;
+    background-color: hsl(240, 1%, 48%);
+}
+
+.todo-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0px 7px 0px hsl(240, 1%, 32%);
+    border-color: hsl(0, 0%, 45%);
+}
+
+.todo-items-wrapper {
+    margin-top: 30px;
+    background-color: hsl(240, 1%, 48%);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 2px 30px 0px rgba(255,255,255,0.15);
+}
+
+.todo-text {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.todo-text.checked {
+    color: #b6b4b4;
+    text-decoration: line-through
+}
+
+.todo-items-info {
+    height: 70px;
+    width: 100%;
+    color: hsl(240, 1%, 57%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+    align-items: center;
+}
+
+.items-statuses {
+    display: flex;
+    justify-content: center;
+}
+
+.items-statuses span {
+    padding: 0 6px;
+    cursor: pointer;
+}
+
+.items-statuses span:hover, .items-statuses span.active, .items-clear:hover {
+    color: #c7c2c2;
+}
+
+.items-clear {
+    cursor: pointer;
+    text-align: end;
+}
